@@ -99,12 +99,19 @@ app.post("/api/login", async (req, res) => {
 });
 app.get("/api/usuarios", async (req, res) => {
   try {
+    console.log("Obteniendo usuarios..."); // Log de depuración
     const usuarios = await collection.find({}, { projection: { email: 1, _id: 1 } }).toArray();
-      res.json({ success: true, usuarios });
+    
+    if (usuarios.length === 0) {
+      console.log("No se encontraron usuarios en la base de datos.");
+    }
+    
+    res.json({ success: true, usuarios });
   } catch (error) {
-      console.error("Error al obtener usuarios:", error);
-      res.status(500).json({ success: false, message: "Error en el servidor" });
+    console.error("Error al obtener usuarios:", error);
+    res.status(500).json({ success: false, message: "Error en el servidor" });
   }
 });
+
 
 module.exports = app;
