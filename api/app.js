@@ -47,7 +47,7 @@ app.get('/api/check-db', async (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Bienvenido a la API hola joel hola' });
+  res.json({ message: 'Bienvenido a la API' });
 });
 
 // Registro de usuario
@@ -97,82 +97,4 @@ app.post("/api/login", async (req, res) => {
       res.status(500).json({ success: false, message: "Error en el servidor." });
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//angel
+module.exports = app;
