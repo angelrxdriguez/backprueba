@@ -97,4 +97,14 @@ app.post("/api/login", async (req, res) => {
       res.status(500).json({ success: false, message: "Error en el servidor." });
   }
 });
+app.get("/api/usuarios", async (req, res) => {
+  try {
+      const usuarios = await collection.find({}, { projection: { email: 1 } }).toArray();
+      res.json({ success: true, usuarios });
+  } catch (error) {
+      console.error("Error al obtener usuarios:", error);
+      res.status(500).json({ success: false, message: "Error en el servidor" });
+  }
+});
+
 module.exports = app;
